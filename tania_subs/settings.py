@@ -23,12 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!f7q7zcq68ux3$7wi_te#)=_i66c)b6x4!a50dfo(p0a3(mmp&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-if DEBUG == True:
-    ALLOWED_HOSTS = []
-else:
-    ALLOWED_HOSTS = ['http://taniamails.pythonanywhere.com/']
+
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -85,7 +83,15 @@ if DEBUG == True:
         }
     }
 else:
-    pass
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'TaniaMails$subs',
+            'USER': 'TaniaMails',
+            'PASSWORD': 'SantiagoB',
+            'HOST': 'TaniaMails.mysql.pythonanywhere-services.com',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
